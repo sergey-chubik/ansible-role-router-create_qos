@@ -1,0 +1,8 @@
+set firewall family inet filter ACL-BULK-DATA-SILVER term t1 from protocol tcp port 20 port 21 port 80 port 40900-40999 address 10.66.198.158
+set firewall family inet filter ACL-BULK-DATA-SILVER term t1 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-SILVER
+set firewall family inet filter ACL-BULK-DATA-SILVER term t2 from protocol tcp port 20 port 21 port 40900-40999 address 10.66.8.41
+set firewall family inet filter ACL-BULK-DATA-SILVER term t2 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-SILVER
+set firewall family inet filter ACL-BULK-DATA-SILVER term t3 from protocol tcp port 137-139 port 445 port 3020
+set firewall family inet filter ACL-BULK-DATA-SILVER term t3 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-SILVER
+set firewall family inet filter ACL-BULK-DATA-SILVER term t4 from protocol udp port 137-139 port 445 port 3020
+set firewall family inet filter ACL-BULK-DATA-SILVER term t4 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-SILVER

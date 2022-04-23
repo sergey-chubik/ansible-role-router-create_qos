@@ -1,0 +1,27 @@
+acl name ACL-BULK-DATA-SILVER 3009
+ description HTTP_CITOV_FTP_FTP_Data_SAMBA_CIFS
+ rule 5 permit tcp source 10.66.198.158 0 source-port eq www
+ rule 10 permit tcp destination 10.66.198.158 0 destination-port eq www
+ rule 15 permit tcp source 10.66.198.158 0 source-port eq ftp
+ rule 20 permit tcp destination 10.66.198.158 0 destination-port eq ftp
+ rule 25 permit tcp source 10.66.8.41 0 source-port eq ftp
+ rule 30 permit tcp destination 10.66.8.41 0 destination-port eq ftp
+ rule 35 permit tcp source 10.66.198.158 0 source-port eq ftp-data
+ rule 40 permit tcp destination 10.66.198.158 0 destination-port eq ftp-data
+ rule 45 permit tcp source 10.66.8.41 0 source-port eq ftp-data
+ rule 50 permit tcp destination 10.66.8.41 0 destination-port eq ftp-data
+ rule 55 permit tcp source 10.66.198.158 0 source-port range 40900 40999
+ rule 60 permit tcp destination 10.66.198.158 0 destination-port range 40900 40999
+ rule 65 permit tcp source 10.66.8.41 0 source-port range 40900 40999
+ rule 70 permit tcp destination 10.66.8.41 0 destination-port range 40900 40999
+ rule 75 permit tcp destination-port range 137 139
+ rule 80 permit tcp source-port range 137 139
+ rule 85 permit udp destination-port range netbios-ns netbios-ssn
+ rule 90 permit udp source-port range netbios-ns netbios-ssn
+ rule 95 permit tcp destination-port eq 445
+ rule 100 permit tcp source-port eq 445
+ rule 105 permit tcp destination-port eq 3020
+ rule 110 permit tcp source-port eq 3020
+ rule 115 permit udp destination-port eq 3020
+ rule 120 permit udp source-port eq 3020
+ quit

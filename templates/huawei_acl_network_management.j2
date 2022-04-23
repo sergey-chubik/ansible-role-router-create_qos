@@ -1,0 +1,52 @@
+acl name ACL-NETWORK-MANAGEMENT 3007
+ description ICMP_SNMP_DNS_SSH_RADMIN_AAA_RDP_LDAP_KERB
+ rule 5 permit icmp
+ rule 10 permit udp destination-port eq dns
+ rule 15 permit udp source-port eq dns
+ rule 20 permit tcp destination-port eq domain
+ rule 25 permit tcp source-port eq domain
+ rule 30 permit udp destination-port eq ntp
+ rule 35 permit udp source-port eq ntp
+ rule 40 permit tcp destination-port eq telnet
+ rule 45 permit tcp source-port eq telnet
+ rule 50 permit tcp destination-port eq 22
+ rule 55 permit tcp source-port eq 22
+ rule 60 permit tcp destination-port eq 135
+ rule 65 permit tcp source-port eq 135
+ rule 70 permit udp destination-port eq 135
+ rule 75 permit udp source-port eq 135
+ rule 80 permit tcp destination-port eq 389
+ rule 85 permit tcp source-port eq 389
+ rule 90 permit udp destination-port eq 389
+ rule 95 permit udp source-port eq 389
+ rule 100 permit tcp destination-port eq 636
+ rule 105 permit tcp source-port eq 636
+ rule 110 permit udp destination-port eq 636
+ rule 115 permit udp source-port eq 636
+ rule 120 permit tcp destination-port range 3268 3269
+ rule 125 permit tcp source-port range 3268 3269
+ rule 130 permit udp destination-port range 3268 3269
+ rule 135 permit udp source-port range 3268 3269
+ rule 140 permit udp destination 10.66.198.159 0 destination-port range 1812 1813
+ rule 145 permit udp source 10.66.198.159 0 source-port range 1812 1813
+ rule 150 permit tcp destination-port eq 88
+ rule 155 permit tcp source-port eq 88
+ rule 160 permit udp destination-port eq 88
+ rule 165 permit udp source-port eq 88
+ rule 170 permit tcp destination-port eq 464
+ rule 175 permit tcp source-port eq 464
+ rule 180 permit udp destination-port eq 464
+ rule 185 permit udp source-port eq 464
+ rule 190 permit udp destination-port eq snmp
+ rule 195 permit udp source-port eq snmp
+ rule 200 permit tcp destination-port range 10050 10051
+ rule 205 permit tcp source-port range 10050 10051
+ rule 210 permit udp destination-port range bootps bootpc
+ rule 215 permit udp source-port range bootps bootpc
+ rule 220 permit udp destination-port eq tftp
+ rule 225 permit udp source-port eq tftp
+ rule 230 permit tcp destination-port eq 1514
+ rule 235 permit tcp source-port eq 1514
+ rule 240 permit tcp destination-port eq 9996
+ rule 245 permit tcp source-port eq 9996
+ quit

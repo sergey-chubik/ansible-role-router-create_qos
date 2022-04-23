@@ -1,0 +1,9 @@
+acl name ACL-MISSION-CRITICAL-DATA-SILVER 3005
+ description ZIMBRA_SED
+ rule 5 permit tcp destination 10.66.198.155 0 destination-port eq 443
+ rule 10 permit tcp source 10.66.198.155 0 source-port eq 443
+ rule 15 permit tcp destination 10.66.198.3 0 destination-port eq 8080
+ rule 20 permit tcp source 10.66.198.3 0 source-port eq 8080
+ rule 25 permit tcp destination 10.66.198.11 0 destination-port eq 8080
+ rule 30 permit tcp source 10.66.198.11 0 source-port eq 8080
+ quit

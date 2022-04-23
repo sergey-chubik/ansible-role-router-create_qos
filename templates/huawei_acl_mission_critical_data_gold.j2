@@ -1,0 +1,35 @@
+acl name ACL-MISSION-CRITICAL-DATA-GOLD 3004
+ description Ovirt_VKS_ZABBIX_SKTS_SEMPL_KERIO_Graylog
+ rule 5 permit tcp destination 10.66.198.160 0 destination-port eq 1420
+ rule 10 permit tcp source 10.66.198.160 0 source-port eq 1420
+ rule 15 permit tcp destination 10.66.198.156 0 destination-port eq www
+ rule 20 permit tcp source 10.66.198.156 0 source-port eq www
+ rule 25 permit tcp destination 10.66.198.135 0 destination-port eq 443
+ rule 30 permit tcp source 10.66.198.135 0 source-port eq 443
+ rule 35 permit tcp destination 10.66.198.128 0.0.0.63 destination-port eq 9090
+ rule 40 permit tcp source 10.66.198.128 0.0.0.63 source-port eq 9090
+ rule 45 permit tcp destination 10.77.253.210 0 destination-port eq 443
+ rule 50 permit tcp source 10.77.253.210 0 source-port eq 443
+ rule 55 permit tcp destination 10.66.198.159 0 destination-port eq www
+ rule 60 permit tcp source 10.66.198.159 0 source-port eq www
+ rule 65 permit tcp destination 10.66.198.158 0 destination-port eq 9081
+ rule 70 permit tcp source 10.66.198.158 0 source-port eq 9081
+ rule 75 permit tcp destination-port eq 4081
+ rule 80 permit tcp source-port eq 4081
+ rule 85 permit tcp destination 10.66.255.22 0 destination-port eq 8002
+ rule 90 permit tcp source 10.66.255.22 0 source-port eq 8002
+ rule 95 permit tcp destination 10.66.200.23 0 destination-port eq 8020
+ rule 100 permit tcp source 10.66.200.23 0 source-port eq 8020
+ rule 105 permit tcp destination 10.66.200.23 0 destination-port eq 8011
+ rule 110 permit tcp source 10.66.200.23 0 source-port eq 8011
+ rule 115 permit tcp destination 10.66.2.5 0 destination-port eq 443
+ rule 120 permit tcp source 10.66.2.5 0 source-port eq 443
+ rule 125 permit tcp destination 10.66.2.6 0 destination-port eq www
+ rule 130 permit tcp source 10.66.2.6 0 source-port eq www
+ rule 135 permit tcp destination 10.66.2.7 0 destination-port eq www
+ rule 140 permit tcp source 10.66.2.7 0 source-port eq www
+ rule 145 permit tcp destination 10.66.9.6 0 destination-port eq www
+ rule 150 permit tcp source 10.66.9.6 0 source-port eq www
+ rule 155 permit tcp destination 10.66.198.155 0 destination-port eq 7071
+ rule 160 permit tcp source 10.66.198.155 0 source-port eq 7071
+ quit

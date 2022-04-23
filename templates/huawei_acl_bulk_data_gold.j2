@@ -1,0 +1,29 @@
+acl name ACL-BULK-DATA-GOLD 3008
+ description MAIL_HTTP_MSK_IPT_HTTPS_MX_FSIN_SU
+ rule 5 permit tcp destination-port eq 995
+ rule 10 permit tcp source-port eq 995
+ rule 15 permit tcp destination-port eq 993
+ rule 20 permit tcp source-port eq 993
+ rule 25 permit tcp destination-port eq pop3
+ rule 30 permit tcp source-port eq pop3
+ rule 35 permit tcp destination-port eq 143
+ rule 40 permit tcp source-port eq 143
+ rule 45 permit tcp destination-port eq 465
+ rule 50 permit tcp source-port eq 465
+ rule 55 permit tcp destination-port eq smtp
+ rule 60 permit tcp source-port eq smtp
+ rule 65 permit udp destination-port eq sunrpc
+ rule 70 permit udp source-port eq sunrpc
+ rule 75 permit tcp destination-port eq sunrpc
+ rule 80 permit tcp source-port eq sunrpc
+ rule 85 permit udp destination-port eq 2049
+ rule 90 permit udp source-port eq 2049
+ rule 95 permit tcp destination-port eq 2049
+ rule 100 permit tcp source-port eq 2049
+ rule 105 permit tcp source 10.77.0.0 0.0.255.255 source-port eq www
+ rule 110 permit tcp source 10.169.0.0 0.0.255.255 source-port eq www
+ rule 115 permit tcp destination 10.77.0.0 0.0.255.255 destination-port eq www
+ rule 120 permit tcp destination 10.169.0.0 0.0.255.255 destination-port eq www
+ rule 125 permit tcp source 10.77.12.41 0 source-port eq 443
+ rule 130 permit tcp destination 10.77.12.41 0 destination-port eq 443
+ quit

@@ -1,0 +1,11 @@
+ip access-list extended ACL-CALL-SIGNALING
+ remark H323
+ permit udp any any eq 1719
+ permit udp any eq 1719 any
+ permit tcp any eq 1720 any
+ permit tcp any any eq 1720
+ remark SIP
+ permit udp any any range 5060 5061
+ permit udp any range 5060 5061 any
+ permit tcp any any range 5060 5061
+ permit tcp any range 5060 5061 any

@@ -1,0 +1,4 @@
+set firewall family inet filter ACL-CALL-SIGNALING term t1 from protocol udp port 1719 port 5060-5061
+set firewall family inet filter ACL-CALL-SIGNALING term t1 then forwarding-class CALL-SIGNALING accept count COUNTER-CALL-SIGNALING
+set firewall family inet filter ACL-CALL-SIGNALING term t2 from protocol tcp port 1720 port 5060-5061
+set firewall family inet filter ACL-CALL-SIGNALING term t2 then forwarding-class CALL-SIGNALING accept count COUNTER-CALL-SIGNALING

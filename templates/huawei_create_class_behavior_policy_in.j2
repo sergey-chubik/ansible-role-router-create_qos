@@ -1,0 +1,104 @@
+system-view
+{% if qos_mark is defined %}
+traffic classifier ROUTING operator or
+ if-match dscp cs6
+ if-match acl ACL-ROUTING
+ quit
+traffic classifier VOICE operator or
+ if-match dscp ef
+ if-match acl ACL-VoIP-RTP
+ quit
+traffic classifier VIDEO-CONFERENCING operator or
+ if-match dscp af41
+ if-match acl ACL-VIDEO-CONFERENCING
+ quit
+traffic classifier CALL-SIGNALING operator or
+ if-match dscp cs3
+ if-match acl ACL-CALL-SIGNALING
+ quit
+traffic classifier MISSION-CRITICAL-DATA operator or
+ if-match dscp af21
+ if-match acl ACL-MISSION-CRITICAL-DATA-GOLD
+ if-match acl ACL-MISSION-CRITICAL-DATA-SILVER
+ if-match acl ACL-MISSION-CRITICAL-DATA-BRONZE
+ quit
+traffic classifier NETWORK-MANAGEMENT operator or
+ if-match dscp cs2
+ if-match acl ACL-NETWORK-MANAGEMENT
+ quit
+traffic classifier BULK-DATA operator or
+ if-match dscp af11
+ if-match acl ACL-BULK-DATA-GOLD
+ if-match acl ACL-BULK-DATA-SILVER
+ quit
+traffic behavior ROUTING-MARK-IN
+ remark dscp cs6
+ statistic enable
+ quit
+traffic behavior VOICE-MARK-IN
+ remark dscp ef
+ statistic enable
+ quit
+traffic behavior VIDEO-CONFERENCING-MARK-IN
+ remark dscp af41
+ statistic enable
+ quit
+traffic behavior CALL-SIGNALING-MARK-IN
+ remark dscp cs3
+ statistic enable
+ quit
+traffic behavior MISSION-CRITICAL-DATA-MARK-IN
+ remark dscp af21
+ statistic enable
+ quit
+traffic behavior NETWORK-MANAGEMENT-MARK-IN
+ remark dscp cs2
+ statistic enable
+ quit
+traffic behavior BULK-DATA-MARK-IN
+ remark dscp af11
+ statistic enable
+ quit
+traffic behavior DEFAULT-MARK-IN
+ remark dscp default
+ statistic enable
+ quit
+traffic policy QOS-MARK-IN
+ classifier ROUTING behavior ROUTING-MARK-IN
+ classifier VOICE behavior VOICE-MARK-IN
+ classifier VIDEO-CONFERENCING behavior VIDEO-CONFERENCING-MARK-IN
+ classifier CALL-SIGNALING behavior CALL-SIGNALING-MARK-IN
+ classifier MISSION-CRITICAL-DATA behavior MISSION-CRITICAL-DATA-MARK-IN
+ classifier NETWORK-MANAGEMENT behavior NETWORK-MANAGEMENT-MARK-IN
+ classifier BULK-DATA behavior BULK-DATA-MARK-IN
+ classifier default-class behavior DEFAULT-MARK-IN
+ quit
+ {% for int in lan_int %}
+interface {{ int }}
+ traffic-policy QOS-MARK-IN inbound
+ quit
+ {% endfor %}
+{% else %}
+traffic classifier ROUTING operator or
+ if-match dscp cs6
+ quit
+traffic classifier VOICE operator or
+ if-match dscp ef
+ quit
+traffic classifier VIDEO-CONFERENCING operator or
+ if-match dscp af41
+ quit
+traffic classifier CALL-SIGNALING operator or
+ if-match dscp cs3
+ quit
+traffic classifier MISSION-CRITICAL-DATA operator or
+ if-match dscp af21
+ quit
+traffic classifier NETWORK-MANAGEMENT operator or
+ if-match dscp cs2
+ quit
+traffic classifier BULK-DATA operator or
+ if-match dscp af11
+ quit
+{% endif %}
+quit

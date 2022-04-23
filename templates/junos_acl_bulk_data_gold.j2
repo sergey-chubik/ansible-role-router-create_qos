@@ -1,0 +1,12 @@
+set firewall family inet filter ACL-BULK-DATA-GOLD term t1 from protocol tcp port 995 port 110 port 993 port 143 port 465 port 25
+set firewall family inet filter ACL-BULK-DATA-GOLD term t1 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-GOLD
+set firewall family inet filter ACL-BULK-DATA-GOLD term t2 from protocol tcp port 111 port 2049
+set firewall family inet filter ACL-BULK-DATA-GOLD term t2 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-GOLD
+set firewall family inet filter ACL-BULK-DATA-GOLD term t3 from protocol udp port 111 port 2049
+set firewall family inet filter ACL-BULK-DATA-GOLD term t3 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-GOLD
+set firewall family inet filter ACL-BULK-DATA-GOLD term t4 from protocol tcp port 80 address 10.77.0.0/16
+set firewall family inet filter ACL-BULK-DATA-GOLD term t4 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-GOLD
+set firewall family inet filter ACL-BULK-DATA-GOLD term t5 from protocol tcp port 80 address 10.169.0.0/16
+set firewall family inet filter ACL-BULK-DATA-GOLD term t5 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-GOLD
+set firewall family inet filter ACL-BULK-DATA-GOLD term t6 from protocol tcp port 443 address 10.77.12.41
+set firewall family inet filter ACL-BULK-DATA-GOLD term t6 then forwarding-class BULK-DATA accept count COUNTER-BULK-DATA-GOLD

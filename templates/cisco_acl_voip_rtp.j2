@@ -1,0 +1,10 @@
+ip access-list extended ACL-VoIP-RTP
+ permit ip any any dscp ef
+ remark Agat_RTP_Traffic
+ permit udp any host 10.66.2.2 range 9000 9200
+ permit udp any host 10.66.9.2 range 9000 9200
+ permit udp host 10.66.2.2 range 9000 9200 any
+ permit udp host 10.66.9.2 range 9000 9200 any
+ remark Asterisk_RTP_Traffic
+ permit udp any host 10.66.2.4 range 9000 9999
+ permit udp host 10.66.2.4 range 9000 9999 any

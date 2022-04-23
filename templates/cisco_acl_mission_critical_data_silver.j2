@@ -1,0 +1,9 @@
+ip access-list extended ACL-MISSION-CRITICAL-DATA-SILVER
+ remark HTTPS_ZIMBRA
+ permit tcp any host 10.66.198.155 eq 443
+ permit tcp host 10.66.198.155 eq 443 any
+ remark HTTP_SED
+ permit tcp any host 10.66.198.3 eq 8080
+ permit tcp any host 10.66.198.11 eq 8080
+ permit tcp host 10.66.198.3 eq 8080 any
+ permit tcp host 10.66.198.11 eq 8080 any

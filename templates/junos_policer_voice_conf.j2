@@ -1,0 +1,32 @@
+{% if qos_out == '2m' %}
+set firewall policer POLICER-VOICE if-exceeding bandwidth-limit 512k burst-size-limit 512k
+set firewall policer POLICER-VOICE then forwarding-class BE
+set firewall policer POLICER-VIDEO-CONFERENCING if-exceeding bandwidth-limit 1256k burst-size-limit 256k
+set firewall policer POLICER-VIDEO-CONFERENCING then forwarding-class BE
+{% elif qos_out == '5m' %}
+set firewall policer POLICER-VOICE if-exceeding bandwidth-limit 1m burst-size-limit 256k
+set firewall policer POLICER-VOICE then forwarding-class BE
+set firewall policer POLICER-VIDEO-CONFERENCING if-exceeding bandwidth-limit 1256k burst-size-limit 256k
+set firewall policer POLICER-VIDEO-CONFERENCING then forwarding-class BE
+{% elif qos_out == '10m' %}
+set firewall policer POLICER-VOICE if-exceeding bandwidth-limit 1m burst-size-limit 256k
+set firewall policer POLICER-VOICE then forwarding-class BE
+set firewall policer POLICER-VIDEO-CONFERENCING if-exceeding bandwidth-limit 1256k burst-size-limit 256k
+set firewall policer POLICER-VIDEO-CONFERENCING then forwarding-class BE
+{% elif qos_out == '20m' %}
+set firewall policer POLICER-VOICE if-exceeding bandwidth-limit 3m burst-size-limit 1m
+set firewall policer POLICER-VOICE then forwarding-class BE
+set firewall policer POLICER-VIDEO-CONFERENCING if-exceeding bandwidth-limit 4m burst-size-limit 1m
+set firewall policer POLICER-VIDEO-CONFERENCING then forwarding-class BE
+{% elif qos_out == '50m' %}
+set firewall policer POLICER-VOICE if-exceeding bandwidth-limit 5m burst-size-limit 1m
+set firewall policer POLICER-VOICE then forwarding-class BE
+set firewall policer POLICER-VIDEO-CONFERENCING if-exceeding bandwidth-limit 6m burst-size-limit 1m
+set firewall policer POLICER-VIDEO-CONFERENCING then forwarding-class BE
+{% elif qos_out == '1g' %}
+set firewall policer POLICER-VOICE if-exceeding bandwidth-limit 5m burst-size-limit 1m
+set firewall policer POLICER-VOICE then forwarding-class BE
+set firewall policer POLICER-VIDEO-CONFERENCING if-exceeding bandwidth-limit 6m burst-size-limit 1m
+set firewall policer POLICER-VIDEO-CONFERENCING then forwarding-class BE
+{% endif %}
+  

@@ -1,0 +1,6 @@
+set firewall family inet filter ACL-NETWORK-MANAGEMENT term t1 from protocol icmp
+set firewall family inet filter ACL-NETWORK-MANAGEMENT term t1 then forwarding-class NETWORK-MANAGEMENT accept count COUNTER-NETWORK-MANAGEMENT
+set firewall family inet filter ACL-NETWORK-MANAGEMENT term t2 from protocol udp port 53 port 67-68 port 88 port 123 port 135 port 161 port 389 port 464 port 636 port 3268-3269 port 1812-1813
+set firewall family inet filter ACL-NETWORK-MANAGEMENT term t2 then forwarding-class NETWORK-MANAGEMENT accept count COUNTER-NETWORK-MANAGEMENT
+set firewall family inet filter ACL-NETWORK-MANAGEMENT term t3 from protocol tcp port 22 port 23 port 53 port 69 port 88 port 135 port 389 port 464 port 636 port 3268-3269 port 1514 port 9996 port 10050-10051
+set firewall family inet filter ACL-NETWORK-MANAGEMENT term t3 then forwarding-class NETWORK-MANAGEMENT accept count COUNTER-NETWORK-MANAGEMENT

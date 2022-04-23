@@ -1,0 +1,114 @@
+system-view
+drop-profile WRED
+ wred dscp
+ dscp af11 low-limit 50 high-limit 100 discard-percentage 10
+ quit
+{% if qos_out == 10 %}
+traffic behavior ROUTING
+ statistic enable
+ gts cir pct 2
+ queue af bandwidth pct 12
+ quit
+traffic behavior VOICE
+ statistic enable
+ car cir pct 8
+ queue ef bandwidth pct 12
+ quit
+traffic behavior VIDEO-CONFERENCING
+ statistic enable
+ car cir pct 13
+ queue llq bandwidth pct 14
+ quit
+traffic behavior CALL-SIGNALING
+ statistic enable
+ gts cir pct 2
+ queue af bandwidth pct 12
+ quit
+traffic behavior MISSION-CRITICAL-DATA
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 10
+ quit
+traffic behavior NETWORK-MANAGEMENT
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 8
+ quit
+traffic behavior BULK-DATA
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 6
+ drop-profile WRED
+ quit
+traffic behavior Be
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 4
+ drop-profile WRED
+ quit
+{% elif qos_out == 5 %}
+traffic behavior ROUTING
+ statistic enable
+ gts cir pct 2
+ queue af bandwidth pct 12
+ quit
+traffic behavior VOICE
+ statistic enable
+ car cir pct 10
+ queue ef bandwidth pct 12
+ quit
+traffic behavior VIDEO-CONFERENCING
+ statistic enable
+ car cir pct 30
+ queue llq bandwidth pct 14
+ quit
+traffic behavior CALL-SIGNALING
+ statistic enable
+ gts cir pct 2
+ queue af bandwidth pct 12
+ quit
+traffic behavior MISSION-CRITICAL-DATA
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 10
+ quit
+traffic behavior NETWORK-MANAGEMENT
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 8
+ quit
+traffic behavior BULK-DATA
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 6
+ drop-profile WRED
+ quit
+traffic behavior Be
+ statistic enable
+ gts cir pct 100
+ queue af bandwidth pct 4
+ drop-profile WRED
+ quit
+{% endif %}
+traffic policy QOS-SHAPE-OUT
+ classifier ROUTING behavior ROUTING
+ classifier VOICE behavior VOICE
+ classifier VIDEO-CONFERENCING behavior VIDEO-CONFERENCING
+ classifier CALL-SIGNALING behavior CALL-SIGNALING
+ classifier MISSION-CRITICAL-DATA behavior MISSION-CRITICAL-DATA
+ classifier NETWORK-MANAGEMENT behavior NETWORK-MANAGEMENT
+ classifier BULK-DATA behavior BULK-DATA
+ classifier default-class behavior Be
+ quit
+interface {{ wan_int }}
+ bandwidth {{ qos_out }}
+ qos gts cir {{ qos_out }}000
+ qos car outbound cir {{ qos_out }}000
+ traffic-policy QOS-SHAPE-OUT outbound
+ quit
+{% for int in gre_int %}
+interface {{ int }}
+ qos pre-classify
+ quit
+{% endfor %}
+quit

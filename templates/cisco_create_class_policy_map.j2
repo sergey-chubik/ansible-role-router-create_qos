@@ -1,0 +1,10 @@
+{% include 'cisco_class_map.j2' %}
+
+{% include 'cisco_policy_map_in.j2' %}
+
+{% include 'cisco_policy_map_out.j2' %}
+
+policy-map QOS-SHAPE-OUT
+ class class-default
+  shape average percent 100
+  service-policy QOS-OUT-{{ qos_out }}M

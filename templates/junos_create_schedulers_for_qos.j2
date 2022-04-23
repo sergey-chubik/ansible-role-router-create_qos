@@ -1,0 +1,185 @@
+{% if qos_out == '2m' %}
+set class-of-service schedulers SCHED-ROUTING transmit-rate percent 2
+set class-of-service schedulers SCHED-ROUTING buffer-size percent 2
+set class-of-service schedulers SCHED-ROUTING priority medium-high
+set class-of-service schedulers SCHED-VOICE transmit-rate percent 10
+set class-of-service schedulers SCHED-VOICE buffer-size percent 10
+set class-of-service schedulers SCHED-VOICE buffer-size exact
+set class-of-service schedulers SCHED-VOICE priority high
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING transmit-rate percent 60
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size percent 60
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size exact
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING priority strict-high
+set class-of-service schedulers SCHED-CALL-SIGNALING transmit-rate percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING buffer-size percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING priority medium-low
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA shaping-rate percent 7
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA buffer-size percent 7
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA priority low
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT shaping-rate percent 11
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT buffer-size percent 11
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT priority low
+set class-of-service schedulers SCHED-BULK-DATA shaping-rate percent 4
+set class-of-service schedulers SCHED-BULK-DATA buffer-size percent 4
+set class-of-service schedulers SCHED-BULK-DATA priority low
+set class-of-service schedulers SCHED-BULK-DATA drop-profile-map loss-priority any protocol any drop-profile WRED-BULK
+set class-of-service schedulers SCHED-BE shaping-rate percent 4
+set class-of-service schedulers SCHED-BE buffer-size remainder
+set class-of-service schedulers SCHED-BE priority low
+set class-of-service schedulers SCHED-BE drop-profile-map loss-priority any protocol any drop-profile WRED-BE
+{% elif qos_out == '5m' %}
+set class-of-service schedulers SCHED-ROUTING transmit-rate percent 2
+set class-of-service schedulers SCHED-ROUTING buffer-size percent 2
+set class-of-service schedulers SCHED-ROUTING priority medium-high
+set class-of-service schedulers SCHED-VOICE transmit-rate percent 10
+set class-of-service schedulers SCHED-VOICE buffer-size percent 10
+set class-of-service schedulers SCHED-VOICE buffer-size exact
+set class-of-service schedulers SCHED-VOICE priority high
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING transmit-rate percent 30
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size percent 30
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size exact
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING priority strict-high
+set class-of-service schedulers SCHED-CALL-SIGNALING transmit-rate percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING buffer-size percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING priority medium-low
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA shaping-rate percent 20
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA buffer-size percent 20
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA priority low
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT shaping-rate percent 11
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT buffer-size percent 11
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT priority low
+set class-of-service schedulers SCHED-BULK-DATA shaping-rate percent 10
+set class-of-service schedulers SCHED-BULK-DATA buffer-size percent 10
+set class-of-service schedulers SCHED-BULK-DATA priority low
+set class-of-service schedulers SCHED-BULK-DATA drop-profile-map loss-priority any protocol any drop-profile WRED-BULK
+set class-of-service schedulers SCHED-BE shaping-rate percent 15
+set class-of-service schedulers SCHED-BE buffer-size remainder
+set class-of-service schedulers SCHED-BE priority low
+set class-of-service schedulers SCHED-BE drop-profile-map loss-priority any protocol any drop-profile WRED-BE
+{% elif qos_out == '10m' %}
+set class-of-service schedulers SCHED-ROUTING transmit-rate percent 2
+set class-of-service schedulers SCHED-ROUTING buffer-size percent 2
+set class-of-service schedulers SCHED-ROUTING priority medium-high
+set class-of-service schedulers SCHED-VOICE transmit-rate percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size exact
+set class-of-service schedulers SCHED-VOICE priority high
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING transmit-rate percent 13
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size percent 13
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size exact
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING priority strict-high
+set class-of-service schedulers SCHED-CALL-SIGNALING transmit-rate percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING buffer-size percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING priority medium-low
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA shaping-rate percent 27
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA buffer-size percent 27
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA priority low
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT shaping-rate percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT buffer-size percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT priority low
+set class-of-service schedulers SCHED-BULK-DATA shaping-rate percent 15
+set class-of-service schedulers SCHED-BULK-DATA buffer-size percent 15
+set class-of-service schedulers SCHED-BULK-DATA priority low
+set class-of-service schedulers SCHED-BULK-DATA drop-profile-map loss-priority any protocol any drop-profile WRED-BULK
+set class-of-service schedulers SCHED-BE shaping-rate percent 18
+set class-of-service schedulers SCHED-BE buffer-size remainder
+set class-of-service schedulers SCHED-BE priority low
+set class-of-service schedulers SCHED-BE drop-profile-map loss-priority any protocol any drop-profile WRED-BE
+{% elif qos_out == '20m' %}
+set class-of-service schedulers SCHED-ROUTING transmit-rate percent 2
+set class-of-service schedulers SCHED-ROUTING buffer-size percent 2
+set class-of-service schedulers SCHED-ROUTING priority medium-high
+set class-of-service schedulers SCHED-VOICE transmit-rate percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size exact
+set class-of-service schedulers SCHED-VOICE priority high
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING transmit-rate percent 20
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size percent 20
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size exact
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING priority strict-high
+set class-of-service schedulers SCHED-CALL-SIGNALING transmit-rate percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING buffer-size percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING priority medium-low
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA shaping-rate percent 25
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA buffer-size percent 25
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA priority low
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT shaping-rate percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT buffer-size percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT priority low
+set class-of-service schedulers SCHED-BULK-DATA shaping-rate percent 13
+set class-of-service schedulers SCHED-BULK-DATA buffer-size percent 13
+set class-of-service schedulers SCHED-BULK-DATA priority low
+set class-of-service schedulers SCHED-BULK-DATA drop-profile-map loss-priority any protocol any drop-profile WRED-BULK
+set class-of-service schedulers SCHED-BE shaping-rate percent 15
+set class-of-service schedulers SCHED-BE buffer-size remainder
+set class-of-service schedulers SCHED-BE priority low
+set class-of-service schedulers SCHED-BE drop-profile-map loss-priority any protocol any drop-profile WRED-BE
+{% elif qos_out == '50m' %}
+set class-of-service schedulers SCHED-ROUTING transmit-rate percent 2
+set class-of-service schedulers SCHED-ROUTING buffer-size percent 2
+set class-of-service schedulers SCHED-ROUTING priority medium-high
+set class-of-service schedulers SCHED-VOICE transmit-rate percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size exact
+set class-of-service schedulers SCHED-VOICE priority high
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING transmit-rate percent 12
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size percent 12
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size exact
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING priority strict-high
+set class-of-service schedulers SCHED-CALL-SIGNALING transmit-rate percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING buffer-size percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING priority medium-low
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA shaping-rate percent 26
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA buffer-size percent 26
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA priority low
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT shaping-rate percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT buffer-size percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT priority low
+set class-of-service schedulers SCHED-BULK-DATA shaping-rate percent 15
+set class-of-service schedulers SCHED-BULK-DATA buffer-size percent 15
+set class-of-service schedulers SCHED-BULK-DATA priority low
+set class-of-service schedulers SCHED-BULK-DATA drop-profile-map loss-priority any protocol any drop-profile WRED-BULK
+set class-of-service schedulers SCHED-BE shaping-rate percent 20
+set class-of-service schedulers SCHED-BE buffer-size remainder
+set class-of-service schedulers SCHED-BE priority low
+set class-of-service schedulers SCHED-BE drop-profile-map loss-priority any protocol any drop-profile WRED-BE
+{% elif qos_out == '1g' %}
+set class-of-service schedulers SCHED-ROUTING transmit-rate percent 2
+set class-of-service schedulers SCHED-ROUTING buffer-size percent 2
+set class-of-service schedulers SCHED-ROUTING priority medium-high
+set class-of-service schedulers SCHED-VOICE transmit-rate percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size percent 8
+set class-of-service schedulers SCHED-VOICE buffer-size exact
+set class-of-service schedulers SCHED-VOICE priority high
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING transmit-rate percent 13
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size percent 13
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING buffer-size exact
+set class-of-service schedulers SCHED-VIDEO-CONFERENCING priority strict-high
+set class-of-service schedulers SCHED-CALL-SIGNALING transmit-rate percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING buffer-size percent 2
+set class-of-service schedulers SCHED-CALL-SIGNALING priority medium-low
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA shaping-rate percent 27
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA buffer-size percent 27
+set class-of-service schedulers SCHED-MISSION-CRITICAL-DATA priority low
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT shaping-rate percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT buffer-size percent 15
+set class-of-service schedulers SCHED-NETWORK-MANAGEMENT priority low
+set class-of-service schedulers SCHED-BULK-DATA shaping-rate percent 15
+set class-of-service schedulers SCHED-BULK-DATA buffer-size percent 15
+set class-of-service schedulers SCHED-BULK-DATA priority low
+set class-of-service schedulers SCHED-BULK-DATA drop-profile-map loss-priority any protocol any drop-profile WRED-BULK
+set class-of-service schedulers SCHED-BE shaping-rate percent 18
+set class-of-service schedulers SCHED-BE buffer-size remainder
+set class-of-service schedulers SCHED-BE priority low
+set class-of-service schedulers SCHED-BE drop-profile-map loss-priority any protocol any drop-profile WRED-BE
+{% endif %}
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class ROUTING scheduler SCHED-ROUTING
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class VOICE scheduler SCHED-VOICE
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class VIDEO-CONFERENCING scheduler SCHED-VIDEO-CONFERENCING
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class CALL-SIGNALING scheduler SCHED-CALL-SIGNALING
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class MISSION-CRITICAL-DATA scheduler SCHED-MISSION-CRITICAL-DATA
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class NETWORK-MANAGEMENT scheduler SCHED-NETWORK-MANAGEMENT
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class BULK-DATA scheduler SCHED-BULK-DATA
+set class-of-service scheduler-maps QOS-SHAPE-OUT forwarding-class BE scheduler SCHED-BE
+set interfaces {{ wan_int }} bandwidth {{ qos_out }}
+set class-of-service interfaces {{ wan_int }} scheduler-map QOS-SHAPE-OUT shaping-rate {{ qos_out }}

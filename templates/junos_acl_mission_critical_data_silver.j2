@@ -1,0 +1,6 @@
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-SILVER term t1 from protocol tcp port 443 address 10.66.198.155
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-SILVER term t1 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-SILVER
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-SILVER term t2 from protocol tcp port 8080 address 10.66.198.3
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-SILVER term t2 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-SILVER
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-SILVER term t3 from protocol tcp port 8080 address 10.66.198.11
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-SILVER term t3 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-SILVER

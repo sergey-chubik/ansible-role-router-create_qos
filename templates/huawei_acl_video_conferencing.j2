@@ -1,0 +1,24 @@
+acl name ACL-VIDEO-CONFERENCING 3002
+ description CONF_RTP_Traffic
+ rule 5 permit ip dscp af41
+ rule 10 permit udp source 10.66.0.0 0.0.255.255 source-port range 8000 8200 destination 10.66.198.160 0 destination-port range 7000 7999
+ rule 15 permit udp source 10.66.198.160 0 source-port range 7000 7999 destination 10.66.0.0 0.0.255.255 destination-port range 8000 8200
+ rule 20 permit udp source 10.77.12.121 0 destination 10.66.198.160 0 destination-port range 7000 7999
+ rule 25 permit udp source 10.66.198.160 0 source-port range 7000 7999 destination 10.77.12.121 0
+ rule 30 permit udp source 10.66.2.5 0 destination 10.66.198.160 0 destination-port range 7000 7999
+ rule 35 permit udp source 10.66.198.160 0 source-port range 7000 7999 destination 10.66.2.5 0
+ rule 40 permit udp source 10.66.2.6 0 destination 10.66.198.160 0 destination-port range 7000 7999
+ rule 45 permit udp source 10.66.198.160 0 source-port range 7000 7999 destination 10.66.2.6 0
+ rule 50 permit udp source 10.66.2.7 0 destination 10.66.198.160 0 destination-port range 7000 7999
+ rule 55 permit udp source 10.66.198.160 0 source-port range 7000 7999 destination 10.66.2.7 0
+ rule 60 permit udp source 10.66.9.6 0 destination 10.66.198.160 0 destination-port range 7000 7999
+ rule 65 permit udp source 10.66.198.160 0 source-port range 7000 7999 destination 10.66.9.6 0
+ rule 70 permit udp source 10.77.12.121 0 destination 10.66.2.5 0
+ rule 75 permit udp source 10.77.12.121 0 destination 10.66.2.6 0
+ rule 80 permit udp source 10.77.12.121 0 destination 10.66.2.7 0
+ rule 85 permit udp source 10.77.12.121 0 destination 10.66.9.6 0
+ rule 90 permit udp source 10.66.2.5 0 destination 10.77.12.121 0
+ rule 95 permit udp source 10.66.2.6 0 destination 10.77.12.121 0
+ rule 100 permit udp source 10.66.2.7 0 destination 10.77.12.121 0
+ rule 105 permit udp source 10.66.9.6 0 destination 10.77.12.121 0
+ quit

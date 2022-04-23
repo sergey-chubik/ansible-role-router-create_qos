@@ -1,0 +1,45 @@
+ip access-list extended ACL-MISSION-CRITICAL-DATA-GOLD
+ remark HTTP_VKS
+ permit tcp any host 10.66.198.160 eq 1420
+ permit tcp host 10.66.198.160 eq 1420 any
+ remark HTTP_ZABBIX
+ permit tcp any host 10.66.198.156 eq www
+ permit tcp host 10.66.198.156 eq www any
+ remark HTTPS_Ovirt
+ permit tcp any host 10.66.198.135 eq 443
+ permit tcp host 10.66.198.135 eq 443 any
+ remark HTTPS_Ovirt_Node
+ permit tcp any 10.66.198.128 0.0.0.63 eq 9090
+ permit tcp 10.66.198.128 0.0.0.63 eq 9090 any
+ remark HTTPS_Ovirt_SED
+ permit tcp any host 10.77.253.210 eq 443
+ permit tcp host 10.77.253.210 eq 443 any
+ remark HTTP_NetBox_Graylog
+ permit tcp any host 10.66.198.159 eq www
+ permit tcp host 10.66.198.159 eq www any
+ remark HTTPS_DrWEB
+ permit tcp any host 10.66.198.158 eq 9081
+ permit tcp host 10.66.198.158 eq 9081 any
+ remark HTTPS_ZIMBRA_ADM
+ permit tcp any host 10.66.198.155 eq 7071
+ permit tcp host 10.66.198.155 eq 7071 any
+ remark KERIO_ADMIN
+ permit tcp any any eq 4081
+ permit tcp any eq 4081 any
+ remark ARM_SKTS
+ permit tcp any host 10.66.255.22 eq 8002
+ permit tcp host 10.66.255.22 eq 8002 any
+ remark ARM_SEMPL
+ permit tcp any host 10.66.200.23 eq 8020
+ permit tcp host 10.66.200.23 eq 8020 any
+ permit tcp any host 10.66.200.23 eq 8011
+ permit tcp host 10.66.200.23 eq 8011 any
+ remark VKS_Kodeki
+ permit tcp any host 10.66.2.5 eq 443
+ permit tcp host 10.66.2.5 eq 443 any
+ permit tcp any host 10.66.2.6 eq www
+ permit tcp host 10.66.2.6 eq www any
+ permit tcp any host 10.66.2.7 eq www
+ permit tcp host 10.66.2.7 eq www any
+ permit tcp any host 10.66.9.6 eq www
+ permit tcp host 10.66.9.6 eq www any

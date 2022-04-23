@@ -1,0 +1,66 @@
+ip access-list extended ACL-NETWORK-MANAGEMENT
+ remark ICMP
+ permit icmp any any
+ remark DNS
+ permit udp any any eq domain
+ permit udp any eq domain any
+ permit tcp any any eq domain
+ permit tcp any eq domain any
+ remark NTP
+ permit udp any any eq ntp
+ permit udp any eq ntp any
+ remark TELNET
+ permit tcp any any eq telnet
+ permit tcp any eq telnet any
+ remark SSH
+ permit tcp any any eq 22
+ permit tcp any eq 22 any
+ remark LDAP
+ permit tcp any any eq 135
+ permit tcp any eq 135 any
+ permit udp any any eq 135
+ permit udp any eq 135 any
+ permit tcp any any eq 389
+ permit tcp any eq 389 any
+ permit udp any any eq 389
+ permit udp any eq 389 any
+ remark LDAPS
+ permit tcp any any eq 636
+ permit tcp any eq 636 any
+ permit udp any any eq 636
+ permit udp any eq 636 any
+ remark GC
+ permit tcp any any range 3268 3269
+ permit tcp any range 3268 3269 any
+ permit udp any any range 3268 3269
+ permit udp any range 3268 3269 any
+ remark RADIUS
+ permit udp any host 10.66.198.159 range 1812 1813
+ permit udp host 10.66.198.159 range 1812 1813 any
+ remark KERBEROS
+ permit tcp any any eq 88
+ permit tcp any eq 88 any
+ permit udp any any eq 88
+ permit udp any eq 88 any
+ permit tcp any any eq 464
+ permit tcp any eq 464 any
+ permit udp any any eq 464
+ permit udp any eq 464 any
+ remark SNMP
+ permit udp any any eq snmp
+ permit udp any eq snmp any
+ remark Zabbi_Agent
+ permit tcp any any range 10050 10051
+ permit tcp any range 10050 10051 any
+ remark DHCP
+ permit udp any any range bootps bootpc
+ permit udp any range bootps bootpc any
+ remark TFTP
+ permit tcp any any eq 69
+ permit tcp any eq 69 any
+ remark SYSLOG
+ permit tcp any any eq 1514
+ permit tcp any eq 1514 any
+ remark NETFLOW
+ permit tcp any any eq 9996
+ permit tcp any eq 9996 any

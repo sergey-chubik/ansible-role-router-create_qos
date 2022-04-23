@@ -1,0 +1,6 @@
+set firewall family inet filter ACL-VoIP-RTP term t1 from protocol udp port 9000-9200 address 10.66.2.2
+set firewall family inet filter ACL-VoIP-RTP term t1 then forwarding-class VOICE accept count COUNTER-VOICE policer POLICER-VOICE
+set firewall family inet filter ACL-VoIP-RTP term t2 from protocol udp port 9000-9200 address 10.66.9.2
+set firewall family inet filter ACL-VoIP-RTP term t2 then forwarding-class VOICE accept count COUNTER-VOICE policer POLICER-VOICE
+set firewall family inet filter ACL-VoIP-RTP term t3 from protocol udp port 9000-9999 address 10.66.2.4
+set firewall family inet filter ACL-VoIP-RTP term t3 then forwarding-class VOICE accept count COUNTER-VOICE policer POLICER-VOICE

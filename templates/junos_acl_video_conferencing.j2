@@ -1,0 +1,46 @@
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t1 from protocol udp source-port 8000-8200 destination-port 7000-7999 destination-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t1 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t2 from protocol udp destination-port 8000-8200 source-port 7000-7999 source-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t2 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t3 from protocol udp source-port 7000-7999 source-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t3 from protocol udp destination-address 10.77.12.121
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t3 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t4 from protocol udp source-address 10.77.12.121
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t4 from protocol udp destination-port 7000-7999 destination-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t4 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t5 from protocol udp source-address 10.66.2.5
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t5 from protocol udp destination-port 7000-7999 destination-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t5 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t6 from protocol udp source-port 7000-7999 source-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t6 from protocol udp destination-address 10.66.2.5
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t6 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t7 from protocol udp source-address 10.66.2.6
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t7 from protocol udp destination-port 7000-7999 destination-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t7 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t8 from protocol udp source-port 7000-7999 source-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t8 from protocol udp destination-address 10.66.2.6
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t8 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t9 from protocol udp source-address 10.66.2.7
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t9 from protocol udp destination-port 7000-7999 destination-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t9 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t10 from protocol udp source-port 7000-7999 source-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t10 from protocol udp destination-address 10.66.2.7
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t10 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t11 from protocol udp source-address 10.66.9.6
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t11 from protocol udp destination-port 7000-7999 destination-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t11 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t12 from protocol udp source-port 7000-7999 source-address 10.66.198.160
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t12 from protocol udp destination-address 10.66.9.6
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t12 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t13 from protocol udp source-address 10.66.2.5
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t13 from protocol udp destination-address 10.77.12.121
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t13 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t14 from protocol udp source-address 10.66.2.6
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t14 from protocol udp destination-address 10.77.12.121
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t14 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t15 from protocol udp source-address 10.66.2.7
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t15 from protocol udp destination-address 10.77.12.121
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t15 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t16 from protocol udp source-address 10.66.9.6
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t16 from protocol udp destination-address 10.77.12.121
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t16 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING

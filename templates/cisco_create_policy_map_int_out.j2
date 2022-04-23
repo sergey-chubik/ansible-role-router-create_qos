@@ -1,0 +1,101 @@
+{% if qos_out == 5 %}
+policy-map QOS-OUT-5M
+ class ROUTING
+  bandwidth percent 2
+ class VOICE
+  priority percent 10
+ class VIDEO-CONFERENCING
+  priority percent 30
+ class CALL-SIGNALING
+  bandwidth percent 2
+ class MISSION-CRITICAL-DATA
+  bandwidth percent 20
+ class NETWORK-MANAGEMENT
+  bandwidth percent 11
+ class BULK-DATA
+  bandwidth percent 10
+  random-detect dscp-based
+  random-detect dscp 10   50    100
+ class class-default
+  bandwidth percent 15
+  random-detect
+{% elif qos_out == 10 %}
+policy-map QOS-OUT-10M
+ class ROUTING
+  bandwidth percent 2
+ class VOICE
+  priority percent 8
+ class VIDEO-CONFERENCING
+  priority percent 13
+ class CALL-SIGNALING
+  bandwidth percent 2
+ class MISSION-CRITICAL-DATA
+  bandwidth percent 27
+ class NETWORK-MANAGEMENT
+  bandwidth percent 15
+ class BULK-DATA
+  bandwidth percent 15
+  random-detect dscp-based
+  random-detect dscp 10   50    100
+ class class-default
+  bandwidth percent 18
+  random-detect
+{% elif qos_out == 20 %}
+policy-map QOS-OUT-20M
+ class ROUTING
+  bandwidth percent 1
+ class VOICE
+  priority percent 8
+ class VIDEO-CONFERENCING
+  priority percent 20
+ class CALL-SIGNALING
+  bandwidth percent 2
+ class MISSION-CRITICAL-DATA
+  bandwidth percent 26
+ class NETWORK-MANAGEMENT
+  bandwidth percent 15
+ class BULK-DATA
+  bandwidth percent 10
+  random-detect dscp-based
+  random-detect dscp 10   50    100
+ class class-default
+  bandwidth percent 17
+  random-detect
+{% elif qos_out == 100 %}
+policy-map QOS-OUT-100M
+ class ROUTING
+  bandwidth percent 2
+ class VOICE
+  priority percent 8
+ class VIDEO-CONFERENCING
+  priority percent 40
+ class CALL-SIGNALING
+  bandwidth percent 2
+ class MISSION-CRITICAL-DATA
+  bandwidth percent 15
+ class NETWORK-MANAGEMENT
+  bandwidth percent 10
+ class BULK-DATA
+  bandwidth percent 10
+  random-detect dscp-based
+  random-detect dscp 10   50    100
+ class class-default
+  bandwidth percent 13
+  random-detect
+{% endif %}
+policy-map QOS-SHAPE-OUT
+ class class-default
+  shape average percent 100
+  service-policy QOS-OUT-{{ qos_out }}M
+interface {{ wan_int }}
+ bandwidth {{ qos_out }}000
+{% if qos_out == 100 %}
+ bandwidth qos-reference 100000
+{% else %}
+ max-reserved-bandwidth 100
+{% endif %}
+ service-policy output QOS-SHAPE-OUT
+{% for int in gre_int %}
+interface {{ int }}
+ qos pre-classify
+{% endfor %}

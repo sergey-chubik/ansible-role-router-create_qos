@@ -1,0 +1,50 @@
+---
+
+- name: RUN CONFIGURE QoS on CISCO ROUTERS
+  block:
+    - name: RUN on CISCO CREATE ACL for QoS
+      ios_config:
+        src: templates/cisco_create_acl_for_qos.j2
+      notify: SAVE CONFIG CISCO
+    - name: RUN on CISCO CREATE CLASS, POLICY for QoS and SETTINGS INTERFACE LAN
+      ios_config:
+        src: templates/cisco_create_class_policy_map_int_in.j2
+      notify: SAVE CONFIG CISCO
+    - name: RUN on CISCO CREATE POLICY for QoS and SETTINGS INTERFACE WAN
+      ios_config:
+        src: templates/cisco_create_policy_map_int_out.j2
+      notify: SAVE CONFIG CISCO
+  when: ansible_network_os == 'ios'
+
+
+- name: RUN CONFIGURE ACL for QoS on JUNOS ROUTERS
+  block:
+    - name: RUN on JUNOS CREATE CLASS, POLICER, ACL for QoS and SETTINGS INTERFACE LAN
+      cli_config:
+        config: "{{ lookup('template', 'templates/junos_create_class_policer_acl_for_qos_int_lan.j2') }}"
+    - name: RUN on JUNOS CREATE WRED, CLASSIFIERS for QoS SETTINGS INTERFACE LAN and MARK DSCP OUT INTERFACE
+      cli_config:
+        config: "{{ lookup('template', 'templates/junos_create_wred_classifiers_for_qos_mark_dscp.j2') }}"
+    - name: RUN on JUNOS CREATE SCHEDULERS and SETTINGS QOS-SHAPE-OUT INTERFACE WAN
+      cli_config:
+        config: "{{ lookup('template', 'templates/junos_create_schedulers_for_qos.j2') }}"
+  when: ansible_network_os == 'junos'
+
+
+- name: RUN CONFIGURE QoS on HUAWEI ROUTERS
+  block:
+    - name: RUN on HUAWEI CREATE ACL for QoS
+      cli_command:
+        command: "{{ lookup('template', 'templates/huawei_create_acl_for_qos.j2') }}"
+    - name: RUN on HUAWEI SETTINGS CLASS, BEHAVIOR, POLICY QoS INTERFACE LAN
+      cli_command:
+        command: "{{ lookup('template', 'templates/huawei_create_class_behavior_policy_in.j2') }}"
+    - name: RUN on HUAWEI CREATE WRED, BEHAVIOR, POLICY QoS INTERFACE WAN
+      cli_command:
+        command: "{{ lookup('template', 'templates/huawei_create_behavior_policy_out.j2') }}"
+    - name: RUN on HUAWEI SAVE CONFIG
+      cli_command:
+        command: save
+        prompt: "Are you sure to continue?"
+        answer: Y
+  when: ansible_network_os == 'ce'

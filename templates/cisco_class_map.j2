@@ -1,0 +1,27 @@
+class-map match-any ROUTING
+ match ip dscp cs6
+ match access-group name ACL-ROUTING
+class-map match-any VOICE
+ match ip dscp ef
+ match access-group name ACL-VoIP-RTP
+class-map match-any VIDEO-CONFERENCING
+ match ip dscp af41
+ match access-group name ACL-VIDEO-CONFERENCING
+class-map match-any CALL-SIGNALING
+ match ip dscp cs3
+ match ip dscp af31
+ match access-group name ACL-CALL-SIGNALING
+class-map match-any MISSION-CRITICAL-DATA
+ match ip dscp af21
+ match access-group name ACL-MISSION-CRITICAL-DATA-GOLD
+ match access-group name ACL-MISSION-CRITICAL-DATA-SILVER
+ match access-group name ACL-MISSION-CRITICAL-DATA-BRONZE
+class-map match-any NETWORK-MANAGEMENT
+ match ip dscp cs2
+ match access-group name ACL-NETWORK-MANAGEMENT
+class-map match-any BULK-DATA
+ match ip dscp af11
+ match access-group name ACL-BULK-DATA-GOLD
+ match access-group name ACL-BULK-DATA-SILVER
+class-map match-any DEFAULT
+ match access-group name ACL-DEFAULT

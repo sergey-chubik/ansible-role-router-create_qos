@@ -1,0 +1,69 @@
+{% if qos_mark is defined %}
+set class-of-service forwarding-classes queue 0 BE
+set class-of-service forwarding-classes queue 1 BULK-DATA
+set class-of-service forwarding-classes queue 2 NETWORK-MANAGEMENT
+set class-of-service forwarding-classes queue 3 MISSION-CRITICAL-DATA
+set class-of-service forwarding-classes queue 4 CALL-SIGNALING
+set class-of-service forwarding-classes queue 5 VIDEO-CONFERENCING priority high
+set class-of-service forwarding-classes queue 6 VOICE priority high
+set class-of-service forwarding-classes queue 7 ROUTING
+
+{% include 'junos_policer_voice_conf.j2' %}
+
+{% include 'junos_acl_routing.j2' %}
+
+{% include 'junos_acl_voip_rtp.j2' %}
+
+{% include 'junos_acl_video_conferencing.j2' %}
+
+{% include 'junos_acl_call_signaling.j2' %}
+
+{% include 'junos_acl_mission_critical_data_gold.j2' %}
+
+{% include 'junos_acl_mission_critical_data_silver.j2' %}
+
+{% include 'junos_acl_mission_critical_data_bronze.j2' %}
+
+{% include 'junos_acl_network_management.j2' %}
+
+{% include 'junos_acl_bulk_data_gold.j2' %}
+
+{% include 'junos_acl_bulk_data_silver.j2' %}
+
+{% include 'junos_acl_qos_mark_in.j2' %}
+
+{% include 'junos_settings_qos_int_lan.j2' %}
+
+{% else %}
+set class-of-service forwarding-classes queue 0 BE
+set class-of-service forwarding-classes queue 1 BULK-DATA
+set class-of-service forwarding-classes queue 2 NETWORK-MANAGEMENT
+set class-of-service forwarding-classes queue 3 MISSION-CRITICAL-DATA
+set class-of-service forwarding-classes queue 4 CALL-SIGNALING
+set class-of-service forwarding-classes queue 5 VIDEO-CONFERENCING priority high
+set class-of-service forwarding-classes queue 6 VOICE priority high
+set class-of-service forwarding-classes queue 7 ROUTING
+
+{% include 'junos_policer_voice_conf.j2' %}
+
+set firewall family inet filter ACL-VoIP-RTP term t1 from dscp ef
+set firewall family inet filter ACL-VoIP-RTP term t1 then forwarding-class VOICE accept count COUNTER-VOICE policer POLICER-VOICE
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t1 from dscp af41
+set firewall family inet filter ACL-VIDEO-CONFERENCING term t1 then forwarding-class VIDEO-CONFERENCING accept count COUNTER-VIDEO-CONFERENCING policer POLICER-VIDEO-CONFERENCING
+ {% if lan_ik_int is defined %}
+set firewall family inet filter QOS-MARK-IN term t1 filter ACL-VoIP-RTP
+set firewall family inet filter QOS-MARK-IN term t2 filter ACL-VIDEO-CONFERENCING
+set firewall family inet filter QOS-MARK-IN term t3 then forwarding-class BE accept
+set firewall family inet filter QOS-MARK-IN-IK term t1 filter ACL-VoIP-RTP
+set firewall family inet filter QOS-MARK-IN-IK term t2 filter ACL-VIDEO-CONFERENCING
+set firewall family inet filter QOS-MARK-IN-IK term t3 filter Deny_SMB_NetBIOS
+set firewall family inet filter QOS-MARK-IN-IK term t4 then forwarding-class BE accept
+ {% else %}
+set firewall family inet filter QOS-MARK-IN term t1 filter ACL-VoIP-RTP
+set firewall family inet filter QOS-MARK-IN term t2 filter ACL-VIDEO-CONFERENCING
+set firewall family inet filter QOS-MARK-IN term t3 then forwarding-class BE accept
+ {% endif %}
+
+{% include 'junos_settings_qos_int_lan.j2' %}
+
+{% endif %}

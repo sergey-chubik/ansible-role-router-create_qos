@@ -1,0 +1,42 @@
+ip access-list extended ACL-MISSION-CRITICAL-DATA-BRONZE
+ remark RADMIN
+ permit tcp any any eq 14899
+ permit tcp any eq 14899 any
+ remark RDP
+ permit tcp any any eq 3389
+ permit tcp any eq 3389 any
+ remark DameWare
+ permit tcp any any eq 6129
+ permit tcp any eq 6129 any
+ remark GlusterFS
+ permit tcp any any range 24007 24009
+ permit tcp any range 24007 24009 any
+ permit tcp any any range 38465 38469
+ permit tcp any range 38465 38469 any
+ remark Ovirt_Virtual_Desktop
+ permit tcp 10.66.198.128 0.0.0.63 eq 54321 any
+ permit tcp 10.66.198.128 0.0.0.63 range 5900 6923 any
+ permit tcp 10.66.198.128 0.0.0.63 range 49152 49216 any
+ permit tcp any 10.66.198.128 0.0.0.63 eq 54321
+ permit tcp any 10.66.198.128 0.0.0.63 range 5900 6923
+ permit tcp any 10.66.198.128 0.0.0.63 range 49152 49216
+ permit tcp 10.66.8.32 0.0.0.31 eq 54321 any
+ permit tcp 10.66.8.32 0.0.0.31 range 5900 6923 any
+ permit tcp 10.66.8.32 0.0.0.31 range 49152 49216 any
+ permit tcp any 10.66.8.32 0.0.0.31 eq 54321
+ permit tcp any 10.66.8.32 0.0.0.31 range 5900 6923
+ permit tcp any 10.66.8.32 0.0.0.31 range 49152 49216
+ remark Ovirt_VM_Console
+ permit tcp 10.66.198.128 0.0.0.63 eq 2223 any
+ permit tcp any 10.66.198.128 0.0.0.63 eq 2223
+ permit tcp 10.66.8.32 0.0.0.31 eq 2223 any
+ permit tcp any 10.66.8.32 0.0.0.31 eq 2223
+ remark Virtual_Machine_Management
+ permit tcp 10.66.198.128 0.0.0.63 eq 16509 any
+ permit tcp any 10.66.198.128 0.0.0.63 eq 16509
+ permit tcp 10.66.198.128 0.0.0.63 eq 16514 any
+ permit tcp any 10.66.198.128 0.0.0.63 eq 16514
+ permit tcp 10.66.8.32 0.0.0.31 eq 16509 any
+ permit tcp any 10.66.8.32 0.0.0.31 eq 16509
+ permit tcp 10.66.8.32 0.0.0.31 eq 16514 any
+ permit tcp any 10.66.8.32 0.0.0.31 eq 16514

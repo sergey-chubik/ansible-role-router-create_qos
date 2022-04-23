@@ -1,0 +1,12 @@
+acl name ACL-CALL-SIGNALING 3003
+ rule 5 permit ip dscp cs3
+ rule 10 permit ip dscp af31
+ rule 15 permit udp destination-port eq 1719
+ rule 20 permit udp source-port eq 1719
+ rule 25 permit tcp destination-port eq 1720
+ rule 30 permit tcp source-port eq 1720
+ rule 35 permit udp destination-port range 5060 5061
+ rule 40 permit udp source-port range 5060 5061
+ rule 45 permit tcp destination-port range 5060 5061
+ rule 50 permit tcp source-port range 5060 5061
+ quit

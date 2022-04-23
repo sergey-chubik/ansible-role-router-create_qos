@@ -1,0 +1,30 @@
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t1 from protocol tcp port 1420 address 10.66.198.160
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t1 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t2 from protocol tcp port 80 address 10.66.198.156
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t2 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t3 from protocol tcp port 443 address 10.66.198.135
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t3 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t4 from protocol tcp port 9090 address 10.66.198.128/26
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t4 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t5 from protocol tcp port 443 address 10.77.253.210
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t5 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t6 from protocol tcp port 80 address 10.66.198.159
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t6 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t7 from protocol tcp port 9081 address 10.66.198.158
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t7 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t8 from protocol tcp port 4081
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t8 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t9 from protocol tcp port 8002 address 10.66.255.22
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t9 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t10 from protocol tcp port 8011 port 8020 address 10.66.200.23
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t10 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t11 from protocol tcp port 443 address 10.66.2.5
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t11 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t12 from protocol tcp port 80 address 10.66.2.6
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t12 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t13 from protocol tcp port 80 address 10.66.2.7
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t13 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t14 from protocol tcp port 80 address 10.66.9.6
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t14 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t15 from protocol tcp port 7071 address 10.66.198.155
+set firewall family inet filter ACL-MISSION-CRITICAL-DATA-GOLD term t15 then forwarding-class MISSION-CRITICAL-DATA accept count COUNTER-MISSION-CRITICAL-DATA-GOLD

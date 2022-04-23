@@ -1,0 +1,21 @@
+ip access-list extended ACL-VIDEO-CONFERENCING
+ permit udp 10.66.0.0 0.0.255.255 range 8000 8200 host 10.66.198.160 range 7000 7999
+ permit udp host 10.66.198.160 range 7000 7999 10.66.0.0 0.0.255.255 range 8000 8200
+ permit udp host 10.77.12.121 host 10.66.198.160 range 7000 7999
+ permit udp host 10.66.198.160 range 7000 7999 host 10.77.12.121
+ permit udp host 10.66.2.5 host 10.66.198.160 range 7000 7999
+ permit udp host 10.66.198.160 range 7000 7999 host 10.66.2.5
+ permit udp host 10.66.2.6 host 10.66.198.160 range 7000 7999
+ permit udp host 10.66.198.160 range 7000 7999 host 10.66.2.6
+ permit udp host 10.66.2.7 host 10.66.198.160 range 7000 7999
+ permit udp host 10.66.198.160 range 7000 7999 host 10.66.2.7
+ permit udp host 10.66.9.6 host 10.66.198.160 range 7000 7999
+ permit udp host 10.66.198.160 range 7000 7999 host 10.66.9.6
+ permit udp host 10.77.12.121 host 10.66.2.5
+ permit udp host 10.77.12.121 host 10.66.2.6
+ permit udp host 10.77.12.121 host 10.66.2.7
+ permit udp host 10.77.12.121 host 10.66.9.6
+ permit udp host 10.66.2.5 host 10.77.12.121
+ permit udp host 10.66.2.6 host 10.77.12.121
+ permit udp host 10.66.2.7 host 10.77.12.121
+ permit udp host 10.66.9.6 host 10.77.12.121

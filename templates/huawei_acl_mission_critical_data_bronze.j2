@@ -1,0 +1,37 @@
+acl name ACL-MISSION-CRITICAL-DATA-BRONZE 3006
+ description RADMIN_RDP_DameWare_Ovirt_VDesktop
+ rule 5 permit tcp destination-port eq 14899
+ rule 10 permit tcp source-port eq 14899
+ rule 15 permit tcp destination-port eq 3389
+ rule 20 permit tcp source-port eq 3389
+ rule 25 permit tcp destination-port eq 6129
+ rule 30 permit tcp source-port eq 6129
+ rule 35 permit tcp destination-port range 24007 24009
+ rule 40 permit tcp source-port range 24007 24009
+ rule 45 permit tcp destination-port range 38465 38469
+ rule 50 permit tcp source-port range 38465 38469
+ rule 55 permit tcp source 10.66.198.128 0.0.0.63 source-port eq 54321
+ rule 60 permit tcp source 10.66.198.128 0.0.0.63 source-port range 5900 6923
+ rule 65 permit tcp source 10.66.198.128 0.0.0.63 source-port range 49152 49216
+ rule 70 permit tcp destination 10.66.198.128 0.0.0.63 destination-port eq 54321
+ rule 75 permit tcp destination 10.66.198.128 0.0.0.63 destination-port range 5900 6923
+ rule 80 permit tcp destination 10.66.198.128 0.0.0.63 destination-port range 49152 49216
+ rule 85 permit tcp source 10.66.8.32 0.0.0.31 source-port eq 54321
+ rule 90 permit tcp source 10.66.8.32 0.0.0.31 source-port range 5900 6923
+ rule 95 permit tcp source 10.66.8.32 0.0.0.31 source-port range 49152 49216
+ rule 100 permit tcp destination 10.66.8.32 0.0.0.31 destination-port eq 54321
+ rule 105 permit tcp destination 10.66.8.32 0.0.0.31 destination-port range 5900 6923
+ rule 110 permit tcp destination 10.66.8.32 0.0.0.31 destination-port range 49152 49216
+ rule 115 permit tcp source 10.66.198.128 0.0.0.63 source-port eq 2223
+ rule 120 permit tcp destination 10.66.198.128 0.0.0.63 destination-port eq 2223
+ rule 125 permit tcp source 10.66.8.32 0.0.0.31 source-port eq 2223
+ rule 130 permit tcp destination 10.66.8.32 0.0.0.31 destination-port eq 2223
+ rule 135 permit tcp source 10.66.198.128 0.0.0.63 source-port eq 16509
+ rule 140 permit tcp destination 10.66.198.128 0.0.0.63 destination-port eq 16509
+ rule 145 permit tcp source 10.66.198.128 0.0.0.63 source-port eq 16514
+ rule 150 permit tcp destination 10.66.198.128 0.0.0.63 destination-port eq 16514
+ rule 155 permit tcp source 10.66.8.32 0.0.0.31 source-port eq 16509
+ rule 160 permit tcp destination 10.66.8.32 0.0.0.31 destination-port eq 16509
+ rule 165 permit tcp source 10.66.8.32 0.0.0.31 source-port eq 16514
+ rule 170 permit tcp destination 10.66.8.32 0.0.0.31 destination-port eq 16514
+ quit

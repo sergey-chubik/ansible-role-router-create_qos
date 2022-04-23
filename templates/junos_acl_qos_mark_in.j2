@@ -1,0 +1,37 @@
+{% if lan_ik_int is defined %}
+set firewall family inet filter QOS-MARK-IN term t1 filter ACL-ROUTING
+set firewall family inet filter QOS-MARK-IN term t2 filter ACL-VoIP-RTP
+set firewall family inet filter QOS-MARK-IN term t3 filter ACL-VIDEO-CONFERENCING
+set firewall family inet filter QOS-MARK-IN term t4 filter ACL-CALL-SIGNALING
+set firewall family inet filter QOS-MARK-IN term t5 filter ACL-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter QOS-MARK-IN term t6 filter ACL-MISSION-CRITICAL-DATA-SILVER
+set firewall family inet filter QOS-MARK-IN term t7 filter ACL-MISSION-CRITICAL-DATA-BRONZE
+set firewall family inet filter QOS-MARK-IN term t8 filter ACL-NETWORK-MANAGEMENT
+set firewall family inet filter QOS-MARK-IN term t9 filter ACL-BULK-DATA-GOLD
+set firewall family inet filter QOS-MARK-IN term t10 filter ACL-BULK-DATA-SILVER
+set firewall family inet filter QOS-MARK-IN term t11 then forwarding-class BE accept
+set firewall family inet filter QOS-MARK-IN-IK term t1 filter ACL-ROUTING
+set firewall family inet filter QOS-MARK-IN-IK term t2 filter ACL-VoIP-RTP
+set firewall family inet filter QOS-MARK-IN-IK term t3 filter ACL-VIDEO-CONFERENCING
+set firewall family inet filter QOS-MARK-IN-IK term t4 filter ACL-CALL-SIGNALING
+set firewall family inet filter QOS-MARK-IN-IK term t5 filter ACL-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter QOS-MARK-IN-IK term t6 filter ACL-MISSION-CRITICAL-DATA-SILVER
+set firewall family inet filter QOS-MARK-IN-IK term t7 filter ACL-MISSION-CRITICAL-DATA-BRONZE
+set firewall family inet filter QOS-MARK-IN-IK term t8 filter ACL-NETWORK-MANAGEMENT
+set firewall family inet filter QOS-MARK-IN-IK term t9 filter ACL-BULK-DATA-GOLD
+set firewall family inet filter QOS-MARK-IN-IK term t10 filter Deny_SMB_NetBIOS
+set firewall family inet filter QOS-MARK-IN-IK term t11 filter ACL-BULK-DATA-SILVER
+set firewall family inet filter QOS-MARK-IN-IK term t12 then forwarding-class BE accept
+{% else %}
+set firewall family inet filter QOS-MARK-IN term t1 filter ACL-ROUTING
+set firewall family inet filter QOS-MARK-IN term t2 filter ACL-VoIP-RTP
+set firewall family inet filter QOS-MARK-IN term t3 filter ACL-VIDEO-CONFERENCING
+set firewall family inet filter QOS-MARK-IN term t4 filter ACL-CALL-SIGNALING
+set firewall family inet filter QOS-MARK-IN term t5 filter ACL-MISSION-CRITICAL-DATA-GOLD
+set firewall family inet filter QOS-MARK-IN term t6 filter ACL-MISSION-CRITICAL-DATA-SILVER
+set firewall family inet filter QOS-MARK-IN term t7 filter ACL-MISSION-CRITICAL-DATA-BRONZE
+set firewall family inet filter QOS-MARK-IN term t8 filter ACL-NETWORK-MANAGEMENT
+set firewall family inet filter QOS-MARK-IN term t9 filter ACL-BULK-DATA-GOLD
+set firewall family inet filter QOS-MARK-IN term t10 filter ACL-BULK-DATA-SILVER
+set firewall family inet filter QOS-MARK-IN term t11 then forwarding-class BE accept
+{% endif %}

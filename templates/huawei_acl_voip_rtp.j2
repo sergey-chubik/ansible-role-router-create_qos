@@ -1,0 +1,10 @@
+acl name ACL-VoIP-RTP 3001
+ description Agat_and_Asterisk_RTP_Traffic
+ rule 5 permit ip dscp ef
+ rule 10 permit udp destination 10.66.2.2 0 destination-port range 9000 9200
+ rule 15 permit udp destination 10.66.9.2 0 destination-port range 9000 9200
+ rule 20 permit udp destination 10.66.2.4 0 destination-port range 9000 9999
+ rule 25 permit udp source 10.66.2.2 0 source-port range 9000 9200
+ rule 30 permit udp source 10.66.9.2 0 source-port range 9000 9200
+ rule 35 permit udp source 10.66.2.4 0 source-port range 9000 9999
+ quit

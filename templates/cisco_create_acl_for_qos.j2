@@ -1,0 +1,27 @@
+{% if qos_mark is defined %}
+
+{% include 'cisco_acl_routing.j2' %}
+
+{% include 'cisco_acl_voip_rtp.j2' %}
+
+{% include 'cisco_acl_video_conferencing.j2' %}
+
+{% include 'cisco_acl_call_signaling.j2' %}
+
+{% include 'cisco_acl_mission_critical_data_gold.j2' %}
+
+{% include 'cisco_acl_mission_critical_data_silver.j2' %}
+
+{% include 'cisco_acl_mission_critical_data_bronze.j2' %}
+
+{% include 'cisco_acl_network_management.j2' %}
+
+{% include 'cisco_acl_bulk_data_gold.j2' %}
+
+{% include 'cisco_acl_bulk_data_silver.j2' %}
+
+{% include 'cisco_acl_default.j2' %}
+
+{% else %}
+
+{% endif %}

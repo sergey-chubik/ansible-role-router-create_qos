@@ -1,0 +1,69 @@
+{% if qos_mark is defined %}
+set class-of-service drop-profiles WRED-BULK fill-level 50 drop-probability 10
+set class-of-service drop-profiles WRED-BULK fill-level 100 drop-probability 100
+set class-of-service drop-profiles WRED-BE fill-level 30 drop-probability 10
+set class-of-service drop-profiles WRED-BE fill-level 100 drop-probability 100
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class ROUTING loss-priority low code-point 110000
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class VOICE loss-priority low code-point 101110
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class VIDEO-CONFERENCING loss-priority low code-point 100010
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class CALL-SIGNALING loss-priority low code-point 011000
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class MISSION-CRITICAL-DATA loss-priority low code-point 010010
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class NETWORK-MANAGEMENT loss-priority low code-point 010000
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class BULK-DATA loss-priority low code-point 001010
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class BE loss-priority low code-point 000000
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class ROUTING loss-priority low code-point 110000
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class ROUTING loss-priority high code-point 110000
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class VOICE loss-priority low code-point 101110
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class VOICE loss-priority high code-point 101110
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class VIDEO-CONFERENCING loss-priority low code-point 100010
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class VIDEO-CONFERENCING loss-priority high code-point 100010
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class CALL-SIGNALING loss-priority low code-point 011000
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class CALL-SIGNALING loss-priority high code-point 011000
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class MISSION-CRITICAL-DATA loss-priority low code-point 010010
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class MISSION-CRITICAL-DATA loss-priority high code-point 010010
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class NETWORK-MANAGEMENT loss-priority low code-point 010000
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class NETWORK-MANAGEMENT loss-priority high code-point 010000
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class BULK-DATA loss-priority low code-point 001010
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class BULK-DATA loss-priority high code-point 001010
+set class-of-service rewrite-rules dscp QOS-MARK-OUT forwarding-class BE loss-priority low code-point 000000
+ {% if lan_ik_int is defined %}
+  {% for int in lan_ik_int %}
+set class-of-service interfaces {{ int }} classifiers dscp QOS-MARK-IN
+  {% endfor %}
+ {% endif %}
+ {% for int in lan_int %}
+set class-of-service interfaces {{ int }} classifiers dscp QOS-MARK-IN
+ {% endfor %}
+ {% if qos_mark_int is defined %}
+  {% for int in qos_mark_int %}
+set class-of-service interfaces {{ int }} rewrite-rules dscp QOS-MARK-OUT
+  {% endfor %}
+ {% elif gre_int is defined %}
+  {% for int in gre_int %}
+set class-of-service interfaces {{ int }} rewrite-rules dscp QOS-MARK-OUT
+  {% endfor %}
+ {% else %}
+set class-of-service interfaces {{ wan_int }} rewrite-rules dscp QOS-MARK-OUT
+ {% endif %}
+{% else %}
+set class-of-service drop-profiles WRED-BULK fill-level 50 drop-probability 10
+set class-of-service drop-profiles WRED-BULK fill-level 100 drop-probability 100
+set class-of-service drop-profiles WRED-BE fill-level 30 drop-probability 10
+set class-of-service drop-profiles WRED-BE fill-level 100 drop-probability 100
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class ROUTING loss-priority low code-point 110000
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class VOICE loss-priority low code-point 101110
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class VIDEO-CONFERENCING loss-priority low code-point 100010
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class CALL-SIGNALING loss-priority low code-point 011000
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class MISSION-CRITICAL-DATA loss-priority low code-point 010010
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class NETWORK-MANAGEMENT loss-priority low code-point 010000
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class BULK-DATA loss-priority low code-point 001010
+set class-of-service classifiers dscp QOS-MARK-IN forwarding-class BE loss-priority low code-point 000000
+ {% if lan_ik_int is defined %}
+  {% for int in lan_ik_int %}
+set class-of-service interfaces {{ int }} classifiers dscp QOS-MARK-IN
+  {% endfor %}
+ {% endif %}
+ {% for int in lan_int %}
+set class-of-service interfaces {{ int }} classifiers dscp QOS-MARK-IN
+ {% endfor %}
+{% endif %}

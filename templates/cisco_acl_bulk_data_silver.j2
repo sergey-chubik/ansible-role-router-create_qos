@@ -1,0 +1,29 @@
+ip access-list extended ACL-BULK-DATA-SILVER
+ remark HTTP_CITOV
+ permit tcp host 10.66.198.158 eq www any
+ permit tcp any host 10.66.198.158 eq www
+ remark FTP
+ permit tcp host 10.66.198.158 eq ftp any
+ permit tcp host 10.66.8.41 eq ftp any
+ permit tcp any host 10.66.198.158 eq ftp
+ permit tcp any host 10.66.8.41 eq ftp
+ remark FTP_Data
+ permit tcp host 10.66.198.158 eq ftp-data any
+ permit tcp host 10.66.198.158 range 40900 40999 any
+ permit tcp host 10.66.8.41 eq ftp-data any
+ permit tcp host 10.66.8.41 range 40900 40999 any
+ permit tcp any host 10.66.198.158 eq ftp-data
+ permit tcp any host 10.66.198.158 range 40900 40999
+ permit tcp any host 10.66.8.41 eq ftp-data
+ permit tcp any host 10.66.8.41 range 40900 40999
+ remark SAMBA_CIFS
+ permit tcp any any range 137 139
+ permit tcp any range 137 139 any
+ permit udp any any range netbios-ns netbios-ss
+ permit udp any range netbios-ns netbios-ss any
+ permit tcp any any eq 445
+ permit tcp any eq 445 any
+ permit tcp any any eq 3020
+ permit tcp any eq 3020 any
+ permit udp any any eq 3020
+ permit udp any eq 3020 any

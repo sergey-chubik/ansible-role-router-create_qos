@@ -1,0 +1,31 @@
+ip access-list extended ACL-BULK-DATA-GOLD
+ remark MAIL
+ permit tcp any any eq 995
+ permit tcp any eq 995 any
+ permit tcp any any eq pop3
+ permit tcp any eq pop3 any
+ permit tcp any any eq 993
+ permit tcp any eq 993 any
+ permit tcp any any eq 143
+ permit tcp any eq 143 any
+ permit tcp any any eq 465
+ permit tcp any eq 465 any
+ permit tcp any any eq smtp
+ permit tcp any eq smtp any
+ remark NFS
+ permit udp any any eq sunrpc
+ permit udp any eq sunrpc any
+ permit tcp any any eq sunrpc
+ permit tcp any eq sunrpc any
+ permit udp any any eq 2049
+ permit udp any eq 2049 any
+ permit tcp any any eq 2049
+ permit tcp any eq 2049 any
+ remark HTTP_MSK_IPT
+ permit tcp 10.77.0.0 0.0.255.255 eq www any
+ permit tcp 10.169.0.0 0.0.255.255 eq www any
+ permit tcp any 10.77.0.0 0.0.255.255 eq www
+ permit tcp any 10.169.0.0 0.0.255.255 eq www
+ remark HTTPS_MX_FSIN_SU
+ permit tcp host 10.77.12.41 eq 443 any
+ permit tcp any host 10.77.12.41 eq 443
